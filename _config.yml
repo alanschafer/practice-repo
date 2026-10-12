@@ -1,20 +1,32 @@
 title: Practice Repo
-description: Practicing making repos with Jekyll and GitHub Pages.
+tagline: "A small studio for big experiments."
+description: "A beautifully over-engineered Jekyll site for practicing Git, GitHub, and the craft of the web."
 baseurl: "/practice-repo"
 url: "https://alanschafer.github.io"
-theme: minima
+github_username: alanschafer
+lang: en
+
+permalink: /blog/:year/:month/:title/
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+
+sass:
+  style: compressed
+
 exclude:
   - hello.py
   - notes.md
   - Gemfile
   - Gemfile.lock
+  - README.md
 
-# Theme customization
-header_pages:
-  - index.md
-  - about.md
-github_username: alanschafer
-minima:
-  date_format: "%B %-d, %Y"
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }

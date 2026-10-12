@@ -24,7 +24,13 @@ https://alanschafer.github.io/practice-repo/
 - `about.md` – about page
 - `_posts/` – blog posts named `YYYY-MM-DD-title.md`
 
-### Theme customization
+### Custom theme
 
-- `assets/main.scss` – overrides Minima's colors, fonts, and widths, plus custom styles
-- `_config.yml` – controls header links (`header_pages`), footer GitHub link, and date format
+The site uses a fully custom, hand-built theme (no Minima):
+
+- `_layouts/` – page templates (`default`, `home`, `page`, `post`)
+- `_includes/` – shared pieces (head, header, footer, logo)
+- `assets/css/style.scss` – all styles; color tokens for dark and light mode are at the top
+- `assets/js/main.js` – theme toggle, scroll reveals, reading progress, hover effects, copy buttons
+- `blog/index.html` – the Journal archive
+- `404.html` – custom not-found page

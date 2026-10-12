@@ -1,0 +1,28 @@
+---
+layout: default
+title: Journal
+---
+<section class="page-wrap wide">
+  <header class="page-head">
+    <span class="kicker reveal">Archive</span>
+    <h1 class="reveal">The <em>Journal</em></h1>
+    <p class="lede reveal">Notes, experiments, and small lessons from learning to build on the web.</p>
+  </header>
+  {% assign years = site.posts | group_by_exp: "p", "p.date | date: '%Y'" %}
+  {% for y in years %}
+  <div class="year-group">
+    <h2 class="year reveal">{{ y.name }}</h2>
+    <ol class="archive">
+      {% for post in y.items %}
+      <li class="reveal">
+        <a href="{{ post.url | relative_url }}">
+          <time>{{ post.date | date: '%b %d' }}</time>
+          <span class="t">{{ post.title }}</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+  {% endfor %}
+</section>

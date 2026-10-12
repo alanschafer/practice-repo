@@ -1,0 +1,13 @@
+---
+layout: default
+---
+<article class="page-wrap">
+  <header class="page-head">
+    <span class="kicker reveal">{{ page.kicker | default: 'Page' }}</span>
+    <h1 class="reveal">{{ page.title }}</h1>
+    {% if page.lede %}<p class="lede reveal">{{ page.lede }}</p>{% endif %}
+  </header>
+  <div class="prose reveal">
+    {{ content }}
+  </div>
+</article>

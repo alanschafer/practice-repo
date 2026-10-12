@@ -1,0 +1,72 @@
+---
+layout: default
+---
+<section class="hero">
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <p class="eyebrow reveal">Est. 2026 &middot; A Jekyll site on GitHub Pages</p>
+  <h1 class="hero-title">
+    <span class="line"><span>Practice,</span></span>
+    <span class="line"><span><em>beautifully</em></span></span>
+    <span class="line"><span>made.</span></span>
+  </h1>
+  <p class="hero-sub reveal">{{ site.description }}</p>
+  <div class="hero-cta reveal">
+    <a class="btn btn-primary magnetic" href="{{ '/blog/' | relative_url }}">Read the journal <span aria-hidden="true">&rarr;</span></a>
+    <a class="btn btn-ghost magnetic" href="https://github.com/{{ site.github_username }}/practice-repo">View source</a>
+  </div>
+  <div class="scroll-hint" aria-hidden="true"><span></span></div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    {% for i in (1..2) %}
+    <span>Git</span><b>&#10022;</b><span><em>Jekyll</em></span><b>&#10022;</b><span>Markdown</span><b>&#10022;</b><span><em>GitHub Pages</em></span><b>&#10022;</b><span>Liquid</span><b>&#10022;</b><span><em>Sass</em></span><b>&#10022;</b>
+    {% endfor %}
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-head reveal">
+    <span class="kicker">01 &mdash; Latest</span>
+    <h2>From the <em>journal</em></h2>
+  </div>
+
+  {% assign latest = site.posts.first %}
+  {% if latest %}
+  <a class="feature reveal tilt" href="{{ latest.url | relative_url }}">
+    <div class="feature-art" aria-hidden="true">
+      <span class="orb"></span>
+      <span class="feature-num">{{ latest.date | date: '%d' }}</span>
+    </div>
+    <div class="feature-body">
+      <span class="meta">{{ latest.date | date: '%B %-d, %Y' }} &middot; {{ latest.content | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
+      <h3>{{ latest.title }}</h3>
+      <p>{{ latest.excerpt | strip_html | truncatewords: 32 }}</p>
+      <span class="link-arrow">Read story <span aria-hidden="true">&rarr;</span></span>
+    </div>
+  </a>
+  {% endif %}
+
+  <div class="grid">
+    {% for post in site.posts offset: 1 limit: 6 %}
+    <a class="card reveal tilt" href="{{ post.url | relative_url }}" style="--d: {{ forloop.index0 | times: 80 }}ms">
+      <span class="card-index">{{ forloop.index | plus: 1 | prepend: '0' }}</span>
+      <span class="meta">{{ post.date | date: '%b %-d, %Y' }}</span>
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+      <span class="link-arrow">Read <span aria-hidden="true">&rarr;</span></span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section stats">
+  <div class="stat reveal"><span class="count" data-to="{{ site.posts.size }}">0</span><small>Stories published</small></div>
+  <div class="stat reveal"><span class="count" data-to="100">0</span><small>Percent handmade</small></div>
+  <div class="stat reveal"><span class="count" data-to="0">0</span><small>Frameworks needed</small></div>
+</section>
+
+<section class="section manifesto reveal">
+  <span class="kicker">02 &mdash; Manifesto</span>
+  {{ content }}
+</section>
