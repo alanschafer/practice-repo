@@ -1,8 +1,9 @@
 ---
 title: "Oat Milk & Honey Soap"
-order: 3
+order: 4
 price: 9
-category: Bath
+taxable: true
+category: Soap
 image: /assets/img/honey-oat-soap.jpg
 short: "A gentle golden bar with colloidal oats, raw honey, and oat milk. Soft on even the driest winter skin."
 details:

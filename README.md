@@ -36,6 +36,8 @@ The site uses a fully custom, hand-built theme (no Minima):
 - `assets/js/main.js` – theme toggle, scroll reveals, reading progress, hover effects, copy buttons
 - `_products/` – one Markdown file per product (title, price, category, image, details)
 - `shop/index.html` – the shop page with category filters
+- `checkout/index.html` + `assets/js/checkout.js` – checkout / point-of-sale register (sample, no real payments)
+- `_config.yml` → `shop:` – tax rate and discount codes used at checkout
 - `journal/index.html` – the Journal archive
 - `assets/img/` – the hearth photo and product images
 - `404.html` – custom not-found page

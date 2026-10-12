@@ -1,0 +1,126 @@
+---
+layout: default
+title: Checkout
+---
+{% assign products = site.products | sort: 'order' %}
+{% assign cats = products | map: 'category' | uniq %}
+<script id="pos-data" type="application/json">
+{
+  "taxRate": {{ site.shop.tax_rate }},
+  "taxLabel": {{ site.shop.tax_label | jsonify }},
+  "discounts": {{ site.shop.discounts | jsonify }},
+  "products": [{% for p in products %}{"id": {{ p.slug | jsonify }}, "title": {{ p.title | jsonify }}, "price": {{ p.price }}, "taxable": {{ p.taxable | default: false }}, "category": {{ p.category | jsonify }}, "img": {{ p.image | relative_url | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]
+}
+</script>
+
+<section class="pos-wrap">
+  <header class="pos-head">
+    <div>
+      <span class="kicker">Checkout &middot; Register</span>
+      <h1>Ring it <em>up.</em></h1>
+    </div>
+    <div class="pos-status">
+      <div><small>Order</small><strong class="pos-order">&mdash;</strong></div>
+      <div><small>Time</small><strong class="pos-clock">&mdash;</strong></div>
+      <div><small>Today</small><strong class="pos-today">0 sales &middot; $0</strong></div>
+    </div>
+  </header>
+
+  <div class="pos">
+    <!-- Product register -->
+    <div class="pos-left">
+      <div class="pos-tools">
+        <div class="filters pos-cats" role="group" aria-label="Filter products">
+          <button type="button" class="chip" aria-pressed="true" data-cat="all">All</button>
+          {% for c in cats %}<button type="button" class="chip" aria-pressed="false" data-cat="{{ c }}">{{ c }}</button>{% endfor %}
+        </div>
+        <label class="pos-search"><span class="sr">Search products</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input type="search" placeholder="Search items" autocomplete="off">
+        </label>
+      </div>
+      <div class="pos-tiles"></div>
+    </div>
+
+    <!-- Ticket -->
+    <aside class="ticket" aria-label="Current order">
+      <div class="ticket-head">
+        <h2>Order <em>ticket</em></h2>
+        <button type="button" class="text-btn pos-clear">Clear</button>
+      </div>
+      <ul class="ticket-lines"></ul>
+      <p class="ticket-empty">Tap an item to add it to the order.</p>
+
+      <details class="ticket-extra">
+        <summary>Customer &amp; discount</summary>
+        <div class="field-row">
+          <label>Customer name<input type="text" class="pos-name" placeholder="Optional" autocomplete="off"></label>
+          <label>Discount code<span class="code-row"><input type="text" class="pos-code" placeholder="e.g. HEARTH10" autocomplete="off"><button type="button" class="text-btn pos-apply">Apply</button></span></label>
+        </div>
+        <p class="pos-code-msg" aria-live="polite"></p>
+      </details>
+
+      <dl class="totals">
+        <div><dt>Subtotal</dt><dd class="t-sub">$0.00</dd></div>
+        <div class="t-disc-row" hidden><dt>Discount <span class="t-disc-label"></span></dt><dd class="t-disc">&minus;$0.00</dd></div>
+        <div><dt>{{ site.shop.tax_label }}<small>Soap only. Cocoa and tea are food items.</small></dt><dd class="t-tax">$0.00</dd></div>
+        <div class="grand"><dt>Total</dt><dd class="t-total">$0.00</dd></div>
+      </dl>
+
+      <div class="pay">
+        <div class="pay-tabs" role="tablist" aria-label="Payment method">
+          <button type="button" role="tab" aria-selected="true" data-pay="card">Card</button>
+          <button type="button" role="tab" aria-selected="false" data-pay="cash">Cash</button>
+          <button type="button" role="tab" aria-selected="false" data-pay="other">Other</button>
+        </div>
+
+        <div class="pay-panel" data-panel="card">
+          <div class="reader" data-state="idle">
+            <div class="reader-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="12" width="36" height="24" rx="4"/><path d="M6 20h36"/><path d="M12 29h8"/></svg>
+            </div>
+            <p class="reader-msg">Ready for tap, insert, or swipe</p>
+          </div>
+        </div>
+
+        <div class="pay-panel" data-panel="cash" hidden>
+          <div class="tendered"><span>Cash tendered</span><strong class="cash-amt">$0.00</strong></div>
+          <div class="quick-cash"></div>
+          <div class="keypad">
+            {% for k in (1..9) %}<button type="button" data-key="{{ k }}">{{ k }}</button>{% endfor %}
+            <button type="button" data-key="00">00</button><button type="button" data-key="0">0</button><button type="button" data-key="back" aria-label="Backspace">&larr;</button>
+          </div>
+          <div class="change"><span>Change due</span><strong class="change-amt">$0.00</strong></div>
+        </div>
+
+        <div class="pay-panel" data-panel="other" hidden>
+          <div class="other-opts">
+            <label><input type="radio" name="other" value="Gift card" checked> Gift card</label>
+            <label><input type="radio" name="other" value="Mobile payment"> Mobile payment</label>
+            <label><input type="radio" name="other" value="Check"> Check</label>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-block pos-charge" disabled>Charge $0.00</button>
+        <p class="drawer-note">Sample register. No real payments are processed.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="receipt-scrim" hidden>
+  <div class="receipt" role="dialog" aria-modal="true" aria-labelledby="rc-title">
+    <div class="receipt-paper">
+      <div class="rc-brand">{% include logo.html %}<h2 id="rc-title">Shay&rsquo;s Hearth</h2><p>Small-batch goods &middot; Made by hand</p></div>
+      <div class="rc-meta"></div>
+      <ul class="rc-lines"></ul>
+      <dl class="rc-totals"></dl>
+      <p class="rc-thanks">Thank you. Stay warm.</p>
+    </div>
+    <div class="receipt-actions">
+      <button type="button" class="btn btn-ghost rc-print">Print receipt</button>
+      <button type="button" class="btn btn-primary rc-new">New sale</button>
+    </div>
+  </div>
+</div>
+<script src="{{ '/assets/js/checkout.js' | relative_url }}" defer></script>

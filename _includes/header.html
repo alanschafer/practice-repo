@@ -32,8 +32,8 @@
   <p class="drawer-empty">Your basket is empty. Something warm awaits in the <a href="{{ '/shop/' | relative_url }}">shop</a>.</p>
   <div class="drawer-foot">
     <div class="drawer-total"><span>Subtotal</span><strong class="basket-total">$0</strong></div>
-    <button class="btn btn-primary btn-block checkout" type="button">Checkout</button>
-    <p class="drawer-note">This is a sample shop. Checkout isn't connected yet.</p>
+    <a class="btn btn-primary btn-block checkout" href="{{ '/checkout/' | relative_url }}">Go to checkout</a>
+    <p class="drawer-note">Sample shop. No real payments are processed.</p>
   </div>
 </aside>
 <div class="toast" role="status" aria-live="polite"></div>

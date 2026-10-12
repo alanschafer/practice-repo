@@ -121,7 +121,7 @@
     item.qty += +b.dataset.d; if (item.qty <= 0) basket = basket.filter((i) => i !== item);
     save(); render();
   });
-  document.querySelector('.checkout').addEventListener('click', () => say('This is a sample shop. Checkout is coming soon.'));
+  addEventListener('basket:changed', () => { basket = load(); render(); });
 
   document.querySelectorAll('[data-add]').forEach((btn) => btn.addEventListener('click', () => {
     const q = btn.hasAttribute('data-with-qty') ? +(document.querySelector('[data-qty] output')?.textContent || 1) : 1;

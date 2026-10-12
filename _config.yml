@@ -1,6 +1,6 @@
 title: "Shay's Hearth"
-tagline: "Small-batch goods for a warmer home."
-description: "Handmade soaps, hot cocoa, candles, and home goods inspired by the old-world hearth, made in small batches for slow evenings and warm kitchens."
+tagline: "Soap, hot cocoa, and tea, made by the fire."
+description: "Handmade soap, rich hot cocoa, and loose-leaf tea blends inspired by the old-world hearth, made in small batches for slow evenings and warm kitchens."
 baseurl: "/practice-repo"
 url: "https://alanschafer.github.io"
 github_username: alanschafer
@@ -36,3 +36,12 @@ defaults:
     values: { layout: post }
   - scope: { path: "", type: products }
     values: { layout: product }
+
+# Checkout / point of sale (sample settings)
+shop:
+  currency: "USD"
+  tax_rate: 0.06875
+  tax_label: "Sales tax (6.875%)"
+  discounts:
+    - { code: "HEARTH10", percent: 10, label: "10% off" }
+    - { code: "FRIEND15", percent: 15, label: "15% off" }

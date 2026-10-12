@@ -2,7 +2,8 @@
 title: "Fireside Hot Cocoa Mix"
 order: 2
 price: 14
-category: Pantry
+taxable: false
+category: Hot Cocoa
 badge: "Seasonal"
 image: /assets/img/hot-cocoa-mix.jpg
 short: "Rich Dutch cocoa, dark chocolate shavings, and fluffy marshmallows, layered in a corked glass jar."

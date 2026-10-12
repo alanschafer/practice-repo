@@ -2,7 +2,8 @@
 title: "Hot Chocolate Soap"
 order: 1
 price: 9
-category: Bath
+taxable: true
+category: Soap
 badge: "Best seller"
 image: /assets/img/hot-chocolate-soap.jpg
 short: "Cocoa butter, a whipped vanilla top, and a dusting of real cocoa. Smells like a mug by the fire."
