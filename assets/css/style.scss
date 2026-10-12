@@ -457,8 +457,8 @@ a:hover .link-arrow span { transform: translateX(6px); }
 .drawer-total strong { font-family: $display; font-weight: 400; font-size: 2rem; }
 .drawer-note { margin: 0; font-size: 13px; color: var(--muted); text-align: center; }
 .toast { position: fixed; left: 50%; bottom: 28px; z-index: 95; transform: translate(-50%, 140%); padding: 14px 22px; border-radius: 999px;
-  background: var(--text); color: var(--bg); font-size: 14px; font-weight: 500; transition: transform .5s $ease; box-shadow: var(--shadow); }
-.toast.show { transform: translate(-50%, 0); }
+  background: var(--text); color: var(--bg); font-size: 14px; font-weight: 500; transition: transform .5s $ease, opacity .4s, visibility .5s; box-shadow: var(--shadow); opacity: 0; visibility: hidden; }
+.toast.show { transform: translate(-50%, 0); opacity: 1; visibility: visible; }
 
 /* Newsletter footer */
 .footer-top { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: end; padding: 60px 0 48px; }
