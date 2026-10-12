@@ -1,6 +1,6 @@
 ---
 title: "Fireside Plaid Throw"
-order: 3
+order: 5
 price: 86
 category: Textiles
 badge: "New"

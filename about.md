@@ -12,7 +12,8 @@ For centuries, the hearth was the center of the home. It was where bread was bak
 
 ## What we make
 
-- **Soap**, cold-processed and cured for weeks, like our Hot Chocolate bar.
+- **Soap**, cold-processed and cured for weeks, like our Hot Chocolate and Oat Milk & Honey bars.
+- **Hot cocoa**, our Fireside Hot Cocoa Mix, the drink that started it all.
 - **Candles**, hand-dipped in pure beeswax.
 - **Textiles**, soft wool throws for the chair nearest the fire.
 - **Kitchen goods**, from wheel-thrown mugs to cast-iron trivets.

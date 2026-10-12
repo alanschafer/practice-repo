@@ -1,6 +1,6 @@
 ---
 title: "Hand-Dipped Beeswax Tapers"
-order: 2
+order: 4
 price: 18
 category: Candles
 image: /assets/img/beeswax-candle.jpg

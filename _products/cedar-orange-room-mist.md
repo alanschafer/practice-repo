@@ -1,6 +1,6 @@
 ---
 title: "Cedar & Orange Room Mist"
-order: 5
+order: 7
 price: 16
 category: Home Fragrance
 image: /assets/img/cedar-room-spray.jpg

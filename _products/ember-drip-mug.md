@@ -1,6 +1,6 @@
 ---
 title: "Ember Drip Mug"
-order: 4
+order: 6
 price: 32
 category: Kitchen
 image: /assets/img/stoneware-mug.jpg

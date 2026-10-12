@@ -32,7 +32,7 @@ layout: default
     <div class="section-head reveal"><span class="kicker">You may also like</span></div>
     <div class="pgrid">
       {% assign others = site.products | where_exp: "p", "p.url != page.url" | sort: 'order' %}
-      {% for p in others limit: 3 %}{% include product-card.html product=p %}{% endfor %}
+      {% for p in others limit: 4 %}{% include product-card.html product=p %}{% endfor %}
     </div>
   </section>
 </article>

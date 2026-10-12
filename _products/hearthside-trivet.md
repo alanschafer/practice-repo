@@ -1,6 +1,6 @@
 ---
 title: "Hearthside Cast-Iron Trivet"
-order: 6
+order: 8
 price: 28
 category: Kitchen
 image: /assets/img/cast-iron-trivet.jpg
