@@ -1,5 +1,7 @@
 # practice-repo
 
+Now home to **Shay's Hearth**, a sample small-batch home goods shop built with Jekyll.
+
 Practicing making repos.
 
 ## Files
@@ -32,5 +34,8 @@ The site uses a fully custom, hand-built theme (no Minima):
 - `_includes/` – shared pieces (head, header, footer, logo)
 - `assets/css/style.scss` – all styles; color tokens for dark and light mode are at the top
 - `assets/js/main.js` – theme toggle, scroll reveals, reading progress, hover effects, copy buttons
-- `blog/index.html` – the Journal archive
+- `_products/` – one Markdown file per product (title, price, category, image, details)
+- `shop/index.html` – the shop page with category filters
+- `journal/index.html` – the Journal archive
+- `assets/img/` – the hearth photo and product images
 - `404.html` – custom not-found page

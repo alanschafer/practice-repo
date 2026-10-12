@@ -4,7 +4,7 @@ layout: default
 {% assign words = content | number_of_words %}
 <article class="post-wrap">
   <header class="post-head">
-    <a class="back" href="{{ '/blog/' | relative_url }}">&larr; All stories</a>
+    <a class="back" href="{{ '/journal/' | relative_url }}">&larr; All stories</a>
     <span class="meta reveal">{{ page.date | date: '%B %-d, %Y' }} &middot; {{ words | divided_by: 200 | plus: 1 }} min read</span>
     <h1 class="reveal">{{ page.title }}</h1>
     {% if page.lede %}<p class="lede reveal">{{ page.lede }}</p>{% endif %}

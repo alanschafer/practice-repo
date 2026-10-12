@@ -1,17 +1,21 @@
-title: Practice Repo
-tagline: "A small studio for big experiments."
-description: "A beautifully over-engineered Jekyll site for practicing Git, GitHub, and the craft of the web."
+title: "Shay's Hearth"
+tagline: "Small-batch goods for a warmer home."
+description: "Handmade soaps, candles, and home goods inspired by the old-world hearth, made in small batches for slow evenings and warm kitchens."
 baseurl: "/practice-repo"
 url: "https://alanschafer.github.io"
 github_username: alanschafer
 lang: en
 
-permalink: /blog/:year/:month/:title/
+permalink: /journal/:year/:month/:title/
 markdown: kramdown
 highlighter: rouge
 kramdown:
   input: GFM
-  syntax_highlighter: rouge
+
+collections:
+  products:
+    output: true
+    permalink: /shop/:name/
 
 plugins:
   - jekyll-feed
@@ -30,3 +34,5 @@ exclude:
 defaults:
   - scope: { path: "", type: posts }
     values: { layout: post }
+  - scope: { path: "", type: products }
+    values: { layout: product }

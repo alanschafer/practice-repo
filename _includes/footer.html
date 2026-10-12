@@ -1,11 +1,22 @@
 <footer class="footer">
-  <div class="footer-big reveal">Keep <em>building.</em></div>
+  <div class="footer-top">
+    <div class="footer-big reveal">Stay <em>warm.</em></div>
+    <form class="newsletter reveal" onsubmit="event.preventDefault(); this.classList.add('done');">
+      <label for="nl">Letters from the hearth, once a month.</label>
+      <div class="nl-row">
+        <input id="nl" type="email" required placeholder="you@example.com" autocomplete="email">
+        <button class="btn btn-primary" type="submit">Join</button>
+      </div>
+      <p class="nl-thanks">Thank you. Pull up a chair, you're on the list.</p>
+    </form>
+  </div>
   <div class="footer-row">
-    <span>&copy; {{ 'now' | date: '%Y' }} {{ site.title }}</span>
+    <span>&copy; {{ 'now' | date: '%Y' }} {{ site.title }} &middot; Made by hand</span>
     <span class="footer-links">
-      <a href="https://github.com/{{ site.github_username }}/practice-repo">Source</a>
+      <a href="{{ '/shop/' | relative_url }}">Shop</a>
+      <a href="{{ '/journal/' | relative_url }}">Journal</a>
       <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
-      <a href="#top" class="to-top">Back to top &uarr;</a>
+      <a href="#top">Back to top &uarr;</a>
     </span>
   </div>
 </footer>

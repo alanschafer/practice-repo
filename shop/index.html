@@ -1,0 +1,20 @@
+---
+layout: default
+title: Shop
+---
+{% assign products = site.products | sort: 'order' %}
+{% assign cats = products | map: 'category' | uniq %}
+<section class="page-wrap wide">
+  <header class="page-head">
+    <span class="kicker reveal">The shop</span>
+    <h1 class="reveal">Everything for the <em>hearth</em></h1>
+    <p class="lede reveal">Soaps, candles, textiles, and kitchen goods, made in small batches and wrapped by hand.</p>
+  </header>
+  <div class="filters reveal" role="group" aria-label="Filter by category">
+    <button type="button" class="chip" aria-pressed="true" data-filter="all">All</button>
+    {% for c in cats %}<button type="button" class="chip" aria-pressed="false" data-filter="{{ c }}">{{ c }}</button>{% endfor %}
+  </div>
+  <div class="pgrid shop-grid">
+    {% for p in products %}{% assign dl = forloop.index0 | times: 60 %}{% include product-card.html product=p delay=dl %}{% endfor %}
+  </div>
+</section>

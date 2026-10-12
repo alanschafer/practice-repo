@@ -1,22 +1,24 @@
 ---
 layout: page
-title: About
-kicker: Colophon
+title: Our Story
+kicker: About Shay's Hearth
 permalink: /about/
-lede: "A practice ground for Git, GitHub, and Jekyll, dressed up in its finest."
+lede: "Small-batch goods inspired by the oldest gathering place in the home."
 ---
 
-## What this is
+## Where it began
 
-This site is a sandbox for learning how repositories, commits, and static sites fit together. Every page you see is plain Markdown turned into HTML by **Jekyll** and served for free by **GitHub Pages**.
+For centuries, the hearth was the center of the home. It was where bread was baked, stories were told, and cold hands were warmed. Shay's Hearth is built around that feeling.
 
-## How it's made
+## What we make
 
-- **Typography:** Instrument Serif for display, Switzer for reading, JetBrains Mono for code.
-- **Design:** a custom theme with hand-written layouts, Sass, and a little JavaScript. No frameworks.
-- **Motion:** scroll reveals, an animated aurora, a reading-progress bar, and a magnetic button or two.
-- **Modes:** light and dark, remembered between visits.
+- **Soap**, cold-processed and cured for weeks, like our Hot Chocolate bar.
+- **Candles**, hand-dipped in pure beeswax.
+- **Textiles**, soft wool throws for the chair nearest the fire.
+- **Kitchen goods**, from wheel-thrown mugs to cast-iron trivets.
 
-## Write a post
+## How we make it
 
-Add a file to `_posts/` named `YYYY-MM-DD-title.md`, give it front matter, and push. The site rebuilds itself in about a minute.
+Slowly. Every product is made in small batches, finished by hand, and wrapped in paper and twine.
+
+> This is a sample shop. Products, prices, and stories are placeholders while the shop takes shape.

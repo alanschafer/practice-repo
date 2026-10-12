@@ -1,0 +1,38 @@
+---
+layout: default
+---
+<article class="product-wrap">
+  <a class="back" href="{{ '/shop/' | relative_url }}">&larr; Back to shop</a>
+  <div class="product">
+    <div class="product-img reveal">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" width="900" height="1125">
+      {% if page.badge %}<span class="badge">{{ page.badge }}</span>{% endif %}
+    </div>
+    <div class="product-info">
+      <span class="meta reveal">{{ page.category }}</span>
+      <h1 class="reveal">{{ page.title }}</h1>
+      <p class="price big reveal">${{ page.price }}</p>
+      <p class="lede reveal">{{ page.short }}</p>
+      <div class="buy reveal">
+        <div class="qty" data-qty>
+          <button type="button" aria-label="Decrease quantity" data-step="-1">&minus;</button>
+          <output>1</output>
+          <button type="button" aria-label="Increase quantity" data-step="1">+</button>
+        </div>
+        <button class="btn btn-primary" type="button" data-add data-with-qty data-id="{{ page.slug }}" data-title="{{ page.title | escape }}" data-price="{{ page.price }}" data-img="{{ page.image | relative_url }}">Add to basket &middot; ${{ page.price }}</button>
+      </div>
+      <div class="prose reveal">{{ content }}</div>
+      <ul class="details reveal">
+        {% for d in page.details %}<li>{{ d }}</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <section class="related">
+    <div class="section-head reveal"><span class="kicker">You may also like</span></div>
+    <div class="pgrid">
+      {% assign others = site.products | where_exp: "p", "p.url != page.url" | sort: 'order' %}
+      {% for p in others limit: 3 %}{% include product-card.html product=p %}{% endfor %}
+    </div>
+  </section>
+</article>

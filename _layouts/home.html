@@ -1,18 +1,24 @@
 ---
 layout: default
 ---
-<section class="hero">
-  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
-  <p class="eyebrow reveal">Est. 2026 &middot; A Jekyll site on GitHub Pages</p>
-  <h1 class="hero-title">
-    <span class="line"><span>Practice,</span></span>
-    <span class="line"><span><em>beautifully</em></span></span>
-    <span class="line"><span>made.</span></span>
-  </h1>
-  <p class="hero-sub reveal">{{ site.description }}</p>
-  <div class="hero-cta reveal">
-    <a class="btn btn-primary magnetic" href="{{ '/blog/' | relative_url }}">Read the journal <span aria-hidden="true">&rarr;</span></a>
-    <a class="btn btn-ghost magnetic" href="https://github.com/{{ site.github_username }}/practice-repo">View source</a>
+{% assign products = site.products | sort: 'order' %}
+{% assign hero_p = products.first %}
+<section class="hero hero-photo">
+  <div class="hero-media" aria-hidden="true">
+    <img src="{{ '/assets/img/hearth.jpg' | relative_url }}" alt="" fetchpriority="high">
+  </div>
+  <canvas class="embers" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <p class="eyebrow reveal">Small-batch goods &middot; Made by hand</p>
+    <h1 class="hero-title">
+      <span class="line"><span>Gather by</span></span>
+      <span class="line"><span>the <em>hearth.</em></span></span>
+    </h1>
+    <p class="hero-sub reveal">{{ site.description }}</p>
+    <div class="hero-cta reveal">
+      <a class="btn btn-primary magnetic" href="{{ '/shop/' | relative_url }}">Shop the collection <span aria-hidden="true">&rarr;</span></a>
+      <a class="btn btn-ghost magnetic" href="{{ '/about/' | relative_url }}">Our story</a>
+    </div>
   </div>
   <div class="scroll-hint" aria-hidden="true"><span></span></div>
 </section>
@@ -20,53 +26,73 @@ layout: default
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
     {% for i in (1..2) %}
-    <span>Git</span><b>&#10022;</b><span><em>Jekyll</em></span><b>&#10022;</b><span>Markdown</span><b>&#10022;</b><span><em>GitHub Pages</em></span><b>&#10022;</b><span>Liquid</span><b>&#10022;</b><span><em>Sass</em></span><b>&#10022;</b>
+    <span>Hand-poured</span><b>&#10022;</b><span><em>Small batch</em></span><b>&#10022;</b><span>Pure beeswax</span><b>&#10022;</b><span><em>Cold-process soap</em></span><b>&#10022;</b><span>Wheel-thrown</span><b>&#10022;</b><span><em>Made with care</em></span><b>&#10022;</b>
     {% endfor %}
   </div>
 </div>
 
 <section class="section">
   <div class="section-head reveal">
-    <span class="kicker">01 &mdash; Latest</span>
-    <h2>From the <em>journal</em></h2>
+    <span class="kicker">01 &mdash; Fireside favorite</span>
   </div>
-
-  {% assign latest = site.posts.first %}
-  {% if latest %}
-  <a class="feature reveal tilt" href="{{ latest.url | relative_url }}">
-    <div class="feature-art" aria-hidden="true">
-      <span class="orb"></span>
-      <span class="feature-num">{{ latest.date | date: '%d' }}</span>
-    </div>
+  <article class="feature reveal">
+    <a class="feature-img" href="{{ hero_p.url | relative_url }}">
+      <img src="{{ hero_p.image | relative_url }}" alt="{{ hero_p.title }}" loading="lazy">
+    </a>
     <div class="feature-body">
-      <span class="meta">{{ latest.date | date: '%B %-d, %Y' }} &middot; {{ latest.content | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
-      <h3>{{ latest.title }}</h3>
-      <p>{{ latest.excerpt | strip_html | truncatewords: 32 }}</p>
-      <span class="link-arrow">Read story <span aria-hidden="true">&rarr;</span></span>
+      <span class="meta">{{ hero_p.badge }} &middot; {{ hero_p.category }}</span>
+      <h2>{{ hero_p.title }}</h2>
+      <p>{{ hero_p.short }}</p>
+      <div class="feature-buy">
+        <span class="price big">${{ hero_p.price }}</span>
+        <button class="btn btn-primary" type="button" data-add data-id="{{ hero_p.slug }}" data-title="{{ hero_p.title | escape }}" data-price="{{ hero_p.price }}" data-img="{{ hero_p.image | relative_url }}">Add to basket</button>
+        <a class="link-arrow" href="{{ hero_p.url | relative_url }}">Details <span aria-hidden="true">&rarr;</span></a>
+      </div>
     </div>
-  </a>
-  {% endif %}
+  </article>
+</section>
 
+<section class="section">
+  <div class="section-head reveal">
+    <span class="kicker">02 &mdash; The collection</span>
+    <h2>Goods for a <em>warmer</em> home</h2>
+  </div>
+  <div class="pgrid">
+    {% for p in products %}
+      {% assign dl = forloop.index0 | times: 60 %}{% include product-card.html product=p delay=dl %}
+    {% endfor %}
+  </div>
+  <div class="center reveal"><a class="btn btn-ghost" href="{{ '/shop/' | relative_url }}">Browse the full shop <span aria-hidden="true">&rarr;</span></a></div>
+</section>
+
+<section class="section values">
+  <div class="value reveal"><span class="vnum">I</span><h3>Small batch</h3><p>Everything is made a few dozen at a time, never by the thousand.</p></div>
+  <div class="value reveal" style="--d:100ms"><span class="vnum">II</span><h3>Honest ingredients</h3><p>Beeswax, cocoa butter, wool, clay, and iron. Things you can name.</p></div>
+  <div class="value reveal" style="--d:200ms"><span class="vnum">III</span><h3>Wrapped by hand</h3><p>Packed in paper and twine, with a handwritten note in every order.</p></div>
+</section>
+
+<section class="section story">
+  <div class="story-img reveal"><img src="{{ '/assets/img/hearth.jpg' | relative_url }}" alt="A giant old stone hearth with a fire burning under a hanging cauldron" loading="lazy"></div>
+  <div class="story-body reveal">
+    <span class="kicker">03 &mdash; Our story</span>
+    {{ content }}
+    <a class="link-arrow" href="{{ '/about/' | relative_url }}">Read our story <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head reveal">
+    <span class="kicker">04 &mdash; From the journal</span>
+    <h2>Notes from the <em>fireside</em></h2>
+  </div>
   <div class="grid">
-    {% for post in site.posts offset: 1 limit: 6 %}
-    <a class="card reveal tilt" href="{{ post.url | relative_url }}" style="--d: {{ forloop.index0 | times: 80 }}ms">
-      <span class="card-index">{{ forloop.index | plus: 1 | prepend: '0' }}</span>
-      <span class="meta">{{ post.date | date: '%b %-d, %Y' }}</span>
+    {% for post in site.posts limit: 2 %}
+    <a class="card reveal tilt" href="{{ post.url | relative_url }}">
+      <span class="meta">{{ post.date | date: '%b %-d, %Y' }} &middot; {{ post.content | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
       <h3>{{ post.title }}</h3>
-      <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+      <p>{{ post.lede }}</p>
       <span class="link-arrow">Read <span aria-hidden="true">&rarr;</span></span>
     </a>
     {% endfor %}
   </div>
-</section>
-
-<section class="section stats">
-  <div class="stat reveal"><span class="count" data-to="{{ site.posts.size }}">0</span><small>Stories published</small></div>
-  <div class="stat reveal"><span class="count" data-to="100">0</span><small>Percent handmade</small></div>
-  <div class="stat reveal"><span class="count" data-to="0">0</span><small>Frameworks needed</small></div>
-</section>
-
-<section class="section manifesto reveal">
-  <span class="kicker">02 &mdash; Manifesto</span>
-  {{ content }}
 </section>

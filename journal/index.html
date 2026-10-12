@@ -6,7 +6,7 @@ title: Journal
   <header class="page-head">
     <span class="kicker reveal">Archive</span>
     <h1 class="reveal">The <em>Journal</em></h1>
-    <p class="lede reveal">Notes, experiments, and small lessons from learning to build on the web.</p>
+    <p class="lede reveal">Stories, care guides, and small notes from the fireside.</p>
   </header>
   {% assign years = site.posts | group_by_exp: "p", "p.date | date: '%Y'" %}
   {% for y in years %}

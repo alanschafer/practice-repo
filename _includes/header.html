@@ -6,14 +6,34 @@
   </a>
   <nav aria-label="Main">
     {% assign here = page.url %}
-    <a href="{{ '/' | relative_url }}" {% if here == '/' %}aria-current="page"{% endif %}>Home</a>
-    <a href="{{ '/blog/' | relative_url }}" {% if here contains '/blog/' %}aria-current="page"{% endif %}>Journal</a>
-    <a href="{{ '/about/' | relative_url }}" {% if here == '/about/' %}aria-current="page"{% endif %}>About</a>
-    <button class="theme-toggle" type="button" aria-label="Toggle light and dark mode">
+    <a href="{{ '/shop/' | relative_url }}" {% if here contains '/shop/' %}aria-current="page"{% endif %}>Shop</a>
+    <a href="{{ '/journal/' | relative_url }}" {% if here contains '/journal/' %}aria-current="page"{% endif %}>Journal</a>
+    <a href="{{ '/about/' | relative_url }}" {% if here == '/about/' %}aria-current="page"{% endif %}>Our Story</a>
+    <button class="icon-btn theme-toggle" type="button" aria-label="Toggle light and dark mode">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
         <path class="moon" d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/>
         <g class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g>
       </svg>
     </button>
+    <button class="icon-btn basket-open" type="button" aria-label="Open basket">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9h14l-1.4 10.2a2 2 0 0 1-2 1.8H8.4a2 2 0 0 1-2-1.8L5 9Z"/><path d="M9 9V7a3 3 0 0 1 6 0v2"/></svg>
+      <span class="basket-count" aria-live="polite">0</span>
+    </button>
   </nav>
 </header>
+
+<div class="drawer-scrim" hidden></div>
+<aside class="drawer" aria-label="Basket" aria-hidden="true">
+  <div class="drawer-head">
+    <h2>Your <em>basket</em></h2>
+    <button class="icon-btn basket-close" type="button" aria-label="Close basket">&times;</button>
+  </div>
+  <ul class="drawer-items"></ul>
+  <p class="drawer-empty">Your basket is empty. Something warm awaits in the <a href="{{ '/shop/' | relative_url }}">shop</a>.</p>
+  <div class="drawer-foot">
+    <div class="drawer-total"><span>Subtotal</span><strong class="basket-total">$0</strong></div>
+    <button class="btn btn-primary btn-block checkout" type="button">Checkout</button>
+    <p class="drawer-note">This is a sample shop. Checkout isn't connected yet.</p>
+  </div>
+</aside>
+<div class="toast" role="status" aria-live="polite"></div>
