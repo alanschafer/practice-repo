@@ -23,3 +23,8 @@ https://alanschafer.github.io/practice-repo/
 - `index.md` – home page
 - `about.md` – about page
 - `_posts/` – blog posts named `YYYY-MM-DD-title.md`
+
+### Theme customization
+
+- `assets/main.scss` – overrides Minima's colors, fonts, and widths, plus custom styles
+- `_config.yml` – controls header links (`header_pages`), footer GitHub link, and date format

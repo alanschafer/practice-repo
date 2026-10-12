@@ -10,3 +10,11 @@ exclude:
   - notes.md
   - Gemfile
   - Gemfile.lock
+
+# Theme customization
+header_pages:
+  - index.md
+  - about.md
+github_username: alanschafer
+minima:
+  date_format: "%B %-d, %Y"
