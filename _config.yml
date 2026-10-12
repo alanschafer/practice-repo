@@ -1,0 +1,12 @@
+title: Practice Repo
+description: Practicing making repos with Jekyll and GitHub Pages.
+baseurl: "/practice-repo"
+url: "https://alanschafer.github.io"
+theme: minima
+plugins:
+  - jekyll-feed
+exclude:
+  - hello.py
+  - notes.md
+  - Gemfile
+  - Gemfile.lock
